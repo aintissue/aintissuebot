@@ -9,7 +9,5 @@ import (
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	bot.Init()
-
 	bot.Run()
 }
