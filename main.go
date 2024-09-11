@@ -1,13 +1,19 @@
 package main
 
-import "log"
+import (
+	"log"
 
-var conf *Config
+	"github.com/aintissue/aintissuebot/bot"
+)
+
+// var conf *Config
 
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	conf = initConfig()
+	// conf = initConfig()
 
 	log.Println("Test.")
+
+	bot.Run()
 }
