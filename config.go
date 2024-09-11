@@ -8,7 +8,7 @@ import (
 
 // Config struct holds all our configuration
 type Config struct {
-	TelegramAPIKey string `json:"telegram_api_key"`
+	TelegramApiKey string `json:"telegram_api_key"`
 }
 
 // Load method loads configuration file to Config struct
