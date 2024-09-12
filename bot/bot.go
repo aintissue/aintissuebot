@@ -19,11 +19,13 @@ func init() {
 	lang = initLang()
 
 	bot = initTelegramBot()
+
+	msgs = make(map[int]int64)
 }
 
 // Prepares the environment and runs the bot
 func Run() {
-	log.Println("Bot started successfully.")
+	log.Println("Bot started successfully. 🚀")
 
 	bot.Start()
 }

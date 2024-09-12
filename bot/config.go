@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	TelegramKey string `yaml:"telegram_key"`
+	OwnerId     int64  `yaml:"owner_id"`
 }
 
 // Load method loads configuration file to Config struct

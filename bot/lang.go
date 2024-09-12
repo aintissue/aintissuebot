@@ -8,7 +8,7 @@ import (
 )
 
 type Language struct {
-	Test string `yaml:"test"`
+	StartMsg string `yaml:"startMsg"`
 }
 
 // Load method loads configuration file to Config struct

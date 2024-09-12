@@ -1,1 +1,4 @@
-test: hello world
+# Language file - en
+
+# Start command
+startMsg: Welcome to our support chat! Ask your question here.
