@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"aintissuebot/bot/commands"
 	"log"
 	"time"
 
@@ -28,6 +27,6 @@ func initTelegramBot() *telebot.Bot {
 
 // Initialize Telegram bot commands
 func initTelegramCommands(b *telebot.Bot) {
-	b.Handle("/start", commands.StartCommand)
-	b.Handle(telebot.OnText, commands.TextCommand)
+	b.Handle("/start", startCommand)
+	b.Handle(telebot.OnText, textCommand)
 }
