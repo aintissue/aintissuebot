@@ -6,7 +6,8 @@ import (
 	"gopkg.in/telebot.v3"
 )
 
+// Handler for text bot command
 func TextCommand(c telebot.Context) error {
-	log.Println("text command")
+	log.Println(c.Message().Text)
 	return nil
 }
