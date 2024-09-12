@@ -1,0 +1,5 @@
+# Telegram API Key
+telegram_key: TELEGRAM_BOT_API_KEY
+
+# Telegram Owner ID
+owner_id: YOUR_TELEGRAM_ID
