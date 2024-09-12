@@ -7,8 +7,6 @@ import (
 	"gopkg.in/telebot.v3"
 )
 
-var msgs map[int]int64
-
 // Handler for text bot command
 func textCommand(c telebot.Context) error {
 	m := c.Message()

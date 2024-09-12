@@ -12,6 +12,8 @@ var bot *telebot.Bot
 
 var lang *Language
 
+var msgs map[int]int64
+
 // Package init function
 func init() {
 	conf = initConfig()
