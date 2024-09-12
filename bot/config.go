@@ -31,6 +31,6 @@ func (c *Config) load(configFile string) {
 
 func initConfig() *Config {
 	c := &Config{}
-	c.load("config.yaml")
+	c.load("data/config.yaml")
 	return c
 }
