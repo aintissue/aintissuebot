@@ -6,7 +6,7 @@ import (
 	"gopkg.in/telebot.v3"
 )
 
-func StartCommand(c telebot.Context) error {
-	log.Println("start command")
+func TextCommand(c telebot.Context) error {
+	log.Println("text command")
 	return nil
 }

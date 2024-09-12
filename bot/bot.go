@@ -1,21 +1,22 @@
 package bot
 
 import (
-	"log"
-	"os"
-
-	"github.com/joho/godotenv"
+	"gopkg.in/telebot.v3"
 )
+
+var conf *Config
+
+var bot *telebot.Bot
 
 // Package init function
 func init() {
-	// loads values from .env into the system
-	if err := godotenv.Load(); err != nil {
-		log.Fatalf("Error getting env, %v", err)
-	}
+	conf = initConfig()
+
+	bot = initTelegramBot()
 }
 
 // Prepares the environment and runs the bot
 func Run() {
-	log.Println(os.Getenv("TELEGRAM_KEY"))
+	// log.Println(conf.TelegramKey)
+	bot.Start()
 }
