@@ -1,9 +1,7 @@
 version: '3'
 services:
-  aintissuebot:
+  bot:
     build: .
     restart: unless-stopped
     volumes:
       - ./data:/root/data
-    # ports:
-    #   - "8080:8080"
