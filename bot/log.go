@@ -7,16 +7,19 @@ import (
 	"runtime"
 )
 
+// Logs error
 func loge(err error) {
 	errMsg := getCallerInfo() + err.Error()
 	log.Println(errMsg)
 }
 
+// Logs string
 func logs(errMsg string) {
 	errMsg = getCallerInfo() + errMsg
 	log.Println(errMsg)
 }
 
+// Returns file and line numbef of the caller of some function
 func getCallerInfo() (info string) {
 
 	// pc, file, lineNo, ok := runtime.Caller(2)
