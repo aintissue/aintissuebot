@@ -6,6 +6,7 @@ import (
 	yaml "gopkg.in/yaml.v3"
 )
 
+// Config stores configuration vars
 type Config struct {
 	TelegramKey string `yaml:"telegram_key"`
 	OwnerId     int64  `yaml:"owner_id"`
