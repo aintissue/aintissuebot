@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"log"
 	"os"
 
 	yaml "gopkg.in/yaml.v3"
@@ -16,7 +15,7 @@ func (l *Language) load(langFile string) {
 	file, err := os.Open(langFile)
 
 	if err != nil {
-		log.Printf("Error while opening lant file: %v", err)
+		loge(err)
 	}
 
 	decoder := yaml.NewDecoder(file)
@@ -24,7 +23,7 @@ func (l *Language) load(langFile string) {
 	err = decoder.Decode(&l)
 
 	if err != nil {
-		log.Printf("Error while decoding YAML: %v", err)
+		loge(err)
 	}
 }
 

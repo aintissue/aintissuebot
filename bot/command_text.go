@@ -2,7 +2,6 @@ package bot
 
 import (
 	"fmt"
-	"log"
 
 	"gopkg.in/telebot.v3"
 )
@@ -19,7 +18,7 @@ func textCommand(c telebot.Context) error {
 
 		_, err := bot.Send(rec, msg, telebot.NoPreview)
 		if err != nil {
-			log.Println(err)
+			loge(err)
 		}
 	} else if m.Private() {
 		rec = &telebot.User{ID: conf.OwnerId}
@@ -29,7 +28,7 @@ func textCommand(c telebot.Context) error {
 
 		mn, err := bot.Send(rec, msg, telebot.NoPreview)
 		if err != nil {
-			log.Println(err)
+			loge(err)
 		}
 
 		msgs[mn.ID] = m.Sender.ID

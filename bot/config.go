@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"log"
 	"os"
 
 	yaml "gopkg.in/yaml.v3"
@@ -17,7 +16,7 @@ func (c *Config) load(configFile string) {
 	file, err := os.Open(configFile)
 
 	if err != nil {
-		log.Printf("Error while opening config file: %v", err)
+		loge(err)
 	}
 
 	decoder := yaml.NewDecoder(file)
@@ -25,7 +24,7 @@ func (c *Config) load(configFile string) {
 	err = decoder.Decode(&c)
 
 	if err != nil {
-		log.Printf("Error while decoding JSON: %v", err)
+		loge(err)
 	}
 }
 

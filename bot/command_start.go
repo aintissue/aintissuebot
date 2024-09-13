@@ -1,8 +1,6 @@
 package bot
 
 import (
-	"log"
-
 	"gopkg.in/telebot.v3"
 )
 
@@ -14,7 +12,7 @@ func startCommand(c telebot.Context) error {
 
 	_, err := bot.Send(m.Chat, response, telebot.NoPreview)
 	if err != nil {
-		log.Println(err)
+		loge(err)
 	}
 
 	return nil

@@ -1,8 +1,6 @@
 package bot
 
 import (
-	"log"
-
 	"gopkg.in/telebot.v3"
 )
 
@@ -27,7 +25,7 @@ func init() {
 
 // Prepares the environment and runs the bot
 func Run() {
-	log.Println("Bot started successfully. 🚀")
+	logs("Bot started successfully. 🚀")
 
 	bot.Start()
 }
