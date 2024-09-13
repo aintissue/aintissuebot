@@ -20,6 +20,8 @@ func textCommand(c telebot.Context) error {
 		if err != nil {
 			loge(err)
 		}
+
+		delete(msgs, m.ReplyTo.ID)
 	} else if m.Private() {
 		rec = &telebot.User{ID: conf.OwnerId}
 		msg = fmt.Sprintf("<b><u>%s:</u></b>\n%s",
