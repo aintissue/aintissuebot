@@ -6,6 +6,7 @@ import (
 	yaml "gopkg.in/yaml.v3"
 )
 
+// Language stores language variables
 type Language struct {
 	StartMsg string `yaml:"startMsg"`
 }
@@ -27,6 +28,7 @@ func (l *Language) load(langFile string) {
 	}
 }
 
+// Initializes language
 func initLang() *Language {
 	l := &Language{}
 	l.load("langs/en.yaml")

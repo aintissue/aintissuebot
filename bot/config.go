@@ -29,6 +29,7 @@ func (c *Config) load(configFile string) {
 	}
 }
 
+// Initializes configuration
 func initConfig() *Config {
 	c := &Config{}
 	c.load("data/config.yaml")

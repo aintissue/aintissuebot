@@ -7,7 +7,7 @@ import (
 	"gopkg.in/telebot.v3"
 )
 
-// Initialize Telegram bot
+// Initializes Telegram bot
 func initTelegramBot() *telebot.Bot {
 	b, err := telebot.NewBot(telebot.Settings{
 		Token:     conf.TelegramKey,
@@ -25,7 +25,7 @@ func initTelegramBot() *telebot.Bot {
 	return b
 }
 
-// Initialize Telegram bot commands
+// Initializes Telegram bot commands
 func initTelegramCommands(b *telebot.Bot) {
 	b.Handle("/start", startCommand)
 	b.Handle(telebot.OnText, textCommand)
