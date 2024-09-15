@@ -28,5 +28,6 @@ func initTelegramBot() *telebot.Bot {
 // Initializes Telegram bot commands
 func initTelegramCommands(b *telebot.Bot) {
 	b.Handle("/start", startCommand)
+	b.Handle("/register", registerCommand)
 	b.Handle(telebot.OnText, textCommand)
 }
