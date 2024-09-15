@@ -1,4 +1,4 @@
-module aintissuebot
+module aintchatbot
 
 go 1.23.0
 
