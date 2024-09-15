@@ -32,7 +32,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 # Copy the Pre-built binary file from the previous stage. Observe we also copied the .env file
-COPY --from=builder /app/aintissuebot .
+COPY --from=builder /app/aintchatbot .
 
 #Command to run the executable
-CMD ["./aintissuebot"]
+CMD ["./aintchatbot"]
