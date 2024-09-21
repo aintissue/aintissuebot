@@ -39,8 +39,7 @@ func newUser(m *telebot.Message) *User {
 		TelLastName:  m.Sender.LastName,
 	}
 
-	err := db.Save(u).Error
-	if err != nil {
+	if err := db.Save(u).Error; err != nil {
 		loge(err)
 	}
 
