@@ -25,11 +25,11 @@ func getUser(tid int64) *User {
 	return u
 }
 
-func userExists(tid int64) bool {
-	u := getUser(tid)
+// func userExists(tid int64) bool {
+// 	u := getUser(tid)
 
-	return u.ID != 0
-}
+// 	return u.ID != 0
+// }
 
 func newUser(m *telebot.Message) *User {
 	u := &User{
