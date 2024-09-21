@@ -13,7 +13,7 @@ type Language struct {
 	RegisterError string `yaml:"registerError"`
 }
 
-// Load method loads configuration file to Config struct
+// Load method loads configuration file to Language struct
 func (l *Language) load(langFile string) {
 	file, err := os.Open(langFile)
 
