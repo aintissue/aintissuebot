@@ -1,3 +1,6 @@
+# More debugging info and SQLite used in dev mode
+dev: true
+
 # Telegram API Key
 telegram_key: TELEGRAM_BOT_API_KEY
 

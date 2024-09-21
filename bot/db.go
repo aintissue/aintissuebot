@@ -9,7 +9,10 @@ func initDb() *gorm.DB {
 	var db *gorm.DB
 	var err error
 
-	db, err = gorm.Open(sqlite.Open("data/bot.db"), &gorm.Config{})
+	if conf.Dev {
+		db, err = gorm.Open(sqlite.Open(DbPath), &gorm.Config{})
+	} else {
+	}
 
 	if err != nil {
 		loge(err)

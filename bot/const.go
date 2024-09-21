@@ -1,3 +1,7 @@
 package bot
 
-const ()
+const (
+	BotName = "AintIssueBot"
+
+	DbPath = "data/bot.db"
+)
