@@ -33,6 +33,6 @@ func (l *Language) load(langFile string) {
 // Initializes language
 func initLang() *Language {
 	l := &Language{}
-	l.load("langs/en.yaml")
+	l.load(LangPath)
 	return l
 }
