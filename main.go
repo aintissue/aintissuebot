@@ -1,8 +1,6 @@
 package main
 
-import (
-	"aintissuebot/bot"
-)
+import "aintissuebot/bot"
 
 // Bot main function
 func main() {

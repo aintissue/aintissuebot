@@ -15,7 +15,7 @@ func initDb() *gorm.DB {
 		loge(err)
 	}
 
-	if err := db.AutoMigrate(&Chat{}); err != nil {
+	if err := db.AutoMigrate(&Chat{}, &User{}); err != nil {
 		panic(err.Error())
 	}
 

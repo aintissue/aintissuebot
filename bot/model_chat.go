@@ -7,3 +7,9 @@ type Chat struct {
 	Namespace string `gorm:"size:255;uniqueIndex"`
 	OwnerID   uint
 }
+
+func newChat() *Chat {
+	c := &Chat{}
+
+	return c
+}

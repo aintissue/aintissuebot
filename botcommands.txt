@@ -5,3 +5,5 @@ close - *Staff* Reply to a ticket with this to close and unban
 clear - *Staff* Closes all tickets
 ban - *Staff* Ban a user from the chat
 unban - *Staff* Unban a user"
+
+register - Register your account or group
