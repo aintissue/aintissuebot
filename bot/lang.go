@@ -8,7 +8,9 @@ import (
 
 // Language stores language variables
 type Language struct {
-	StartMsg string `yaml:"startMsg"`
+	StartMsg      string `yaml:"startMsg"`
+	RegisterDone  string `yaml:"registerDone"`
+	RegisterError string `yaml:"registerError"`
 }
 
 // Load method loads configuration file to Config struct

@@ -1,4 +1,10 @@
 # Language file - en
 
-# Start command
+# Start command message
 startMsg: "Welcome to our support chat! Ask your question here."
+
+# Register command done message
+registerDone: "<b><u>You have successfully registered your group or account with AintIssueBot.</u></b> 🚀\n\nUse the link bellow as contact point for your users.\n\n<code>%s</code>"
+
+# Register command error message
+registerError: "You either have to define your project name with <code>/register ProjectName</code> or you have to have public username / link on your Telegram account or group."
