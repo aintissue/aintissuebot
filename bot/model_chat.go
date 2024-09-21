@@ -2,12 +2,14 @@ package bot
 
 import "gorm.io/gorm"
 
+// Struct representing Chat object
 type Chat struct {
 	gorm.Model
 	Namespace string `gorm:"size:255;uniqueIndex"`
 	OwnerID   int64
 }
 
+// Creates new Chat object
 func newChat(ns string, ownerId int64) *Chat {
 	c := &Chat{
 		Namespace: ns,
@@ -21,6 +23,7 @@ func newChat(ns string, ownerId int64) *Chat {
 	return c
 }
 
+// Fetches Chat object by namespace
 func getChat(ns string) *Chat {
 	c := &Chat{}
 
@@ -31,6 +34,7 @@ func getChat(ns string) *Chat {
 	return c
 }
 
+// Fetches Chat object by ID
 func getChatId(id uint) *Chat {
 	c := &Chat{}
 
