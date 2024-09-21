@@ -20,3 +20,9 @@ func newChat(ns string, ownerId int64) *Chat {
 
 	return c
 }
+
+func getChat(ns string) *Chat {
+	c := &Chat{}
+
+	return c
+}
