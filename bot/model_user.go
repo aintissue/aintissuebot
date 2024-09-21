@@ -7,7 +7,7 @@ import (
 
 type User struct {
 	gorm.Model
-	TelegramId    int64
+	TelegramId    int64  `gorm:"uniqueIndex"`
 	TelUsername   string `gorm:"size:255"`
 	TelFirstName  string `gorm:"size:255"`
 	TelLastName   string `gorm:"size:255"`

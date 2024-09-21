@@ -23,7 +23,9 @@ func textCommand(c telebot.Context) error {
 
 		delete(msgs, m.ReplyTo.ID)
 	} else if m.Private() {
-		rec = &telebot.User{ID: conf.OwnerId}
+		u := getUser(m.Chat.ID)
+		c := getChatId(u.DefaultChatID)
+		rec = &telebot.User{ID: c.OwnerID}
 		msg = fmt.Sprintf("<b><u>%s:</u></b>\n%s",
 			m.Sender.FirstName,
 			m.Text)
