@@ -8,7 +8,7 @@ LABEL maintainer="Frenly Bro <frenlybro@proton.me>"
 
 # Install git.
 # Git is required for fetching the dependencies.
-RUN apk update && apk add --no-cache git
+RUN apk update && apk add --no-cache git && apk add --no-cache build-base
 
 # Set the current working directory inside the container 
 WORKDIR /app
@@ -23,7 +23,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN CGO_ENABLED=0 GOOS=linux go build
+RUN CGO_ENABLED=1 GOOS=linux go build
 
 # Start a new stage from scratch
 FROM alpine:latest

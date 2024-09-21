@@ -5,3 +5,4 @@ services:
     restart: unless-stopped
     volumes:
       - ./data:/root/data
+      - ./langs:/root/langs
