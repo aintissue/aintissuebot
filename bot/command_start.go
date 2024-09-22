@@ -15,15 +15,17 @@ func startCommand(c telebot.Context) error {
 		loge(err)
 	}
 
-	u := newUser(m)
+	u := getUserOrCreate(m)
 
 	if len(m.Payload) > 0 {
 		c := getChat(m.Payload)
 		u.DefaultChatID = c.ID
+	} else {
+		u.DefaultChatID = 1
+	}
 
-		if err := db.Save(u).Error; err != nil {
-			loge(err)
-		}
+	if err := db.Save(u).Error; err != nil {
+		loge(err)
 	}
 
 	return nil

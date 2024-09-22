@@ -33,7 +33,7 @@ func getUser(tid int64) *User {
 
 func newUser(m *telebot.Message) *User {
 	u := &User{
-		TelegramId:   m.Chat.ID,
+		TelegramId:   m.Sender.ID,
 		TelUsername:  m.Sender.Username,
 		TelFirstName: m.Sender.FirstName,
 		TelLastName:  m.Sender.LastName,
@@ -41,6 +41,16 @@ func newUser(m *telebot.Message) *User {
 
 	if err := db.Save(u).Error; err != nil {
 		loge(err)
+	}
+
+	return u
+}
+
+func getUserOrCreate(m *telebot.Message) *User {
+	u := getUser(m.Sender.ID)
+
+	if u.ID == 0 {
+		u = newUser(m)
 	}
 
 	return u
