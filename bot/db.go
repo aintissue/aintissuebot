@@ -5,6 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Initializes DB object
 func initDb() *gorm.DB {
 	var db *gorm.DB
 	var err error
