@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -13,7 +14,7 @@ func initDb() *gorm.DB {
 	if conf.Dev {
 		db, err = gorm.Open(sqlite.Open(conf.DbURI), &gorm.Config{})
 	} else {
-		db, err = gorm.Open(sqlite.Open(conf.DbURI), &gorm.Config{})
+		db, err = gorm.Open(postgres.Open(conf.DbURI), &gorm.Config{})
 	}
 
 	if err != nil {
