@@ -9,7 +9,7 @@ import (
 // Handler for register bot command
 func registerCommand(c telebot.Context) error {
 	m := c.Message()
-	response := "You either have to define your project name with <code>/register ProjectName</code> or you have to have public username / link on your Telegram account or group."
+	response := lang.RegisterError
 
 	if len(m.Payload) > 0 {
 		newChat(m.Payload, c.Chat().ID)
