@@ -13,7 +13,7 @@ type User struct {
 	TelFirstName  string `gorm:"size:255"`
 	TelLastName   string `gorm:"size:255"`
 	DefaultChatID uint
-	DefaultChat   *Chat
+	DefaultChat   *Chat `gorm:"default:1"`
 }
 
 // Fetches User object by Telegram ID
