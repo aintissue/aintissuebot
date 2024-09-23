@@ -5,6 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Struct representing User object
 type User struct {
 	gorm.Model
 	TelegramId    int64  `gorm:"uniqueIndex"`
@@ -15,6 +16,7 @@ type User struct {
 	DefaultChat   *Chat
 }
 
+// Fetches User object by Telegram ID
 func getUser(tid int64) *User {
 	u := &User{}
 	// log.Println(prettyPrint(u))
@@ -31,6 +33,7 @@ func getUser(tid int64) *User {
 // 	return u.ID != 0
 // }
 
+// Creates new User object in the database using telebot.Message object
 func newUser(m *telebot.Message) *User {
 	u := &User{
 		TelegramId:   m.Sender.ID,
@@ -46,6 +49,7 @@ func newUser(m *telebot.Message) *User {
 	return u
 }
 
+// Fetches User object and creates it if it doesn't exist
 func getUserOrCreate(m *telebot.Message) *User {
 	u := getUser(m.Sender.ID)
 
