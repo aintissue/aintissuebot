@@ -22,21 +22,21 @@ func initTelegramBot() *telebot.Bot {
 
 	initTelegramCommands(b)
 
-	cmd := telebot.Command{Text: "help", Description: "Some help command"}
+	// cmd := telebot.Command{Text: "help", Description: "Some help command"}
 
-	cmds, err := b.Commands()
-	if err != nil {
-		log.Println(err)
-	}
+	// cmds, err := b.Commands()
+	// if err != nil {
+	// 	log.Println(err)
+	// }
 
-	log.Println(prettyPrint(cmds))
+	// log.Println(prettyPrint(cmds))
 
 	sc := telebot.CommandScope{
 		Type: telebot.CommandScopeAllPrivateChats,
 	}
 
-	err = b.SetCommands([]telebot.Command{cmd}, sc)
-	// err = b.SetCommands([]telebot.Command{}, sc)
+	// err = b.SetCommands([]telebot.Command{cmd}, sc)
+	err = b.SetCommands([]telebot.Command{}, sc)
 	if err != nil {
 		log.Println(err)
 	}
