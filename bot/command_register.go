@@ -13,11 +13,19 @@ func registerCommand(c telebot.Context) error {
 	getUserOrCreate(m)
 
 	if len(m.Payload) > 0 {
-		newChat(m.Payload, c.Chat().ID)
-		response = fmt.Sprintf(lang.RegisterDone, generateLink(m.Payload))
+		chat := newChat(m.Payload, c.Chat().ID)
+		if chat.ID != 0 {
+			response = fmt.Sprintf(lang.RegisterDone, generateLink(m.Payload))
+		} else {
+			response = lang.RegDuplicate
+		}
 	} else if len(c.Chat().Username) > 0 {
-		newChat(c.Chat().Username, c.Chat().ID)
-		response = fmt.Sprintf(lang.RegisterDone, generateLink(c.Chat().Username))
+		chat := newChat(c.Chat().Username, c.Chat().ID)
+		if chat.ID != 0 {
+			response = fmt.Sprintf(lang.RegisterDone, generateLink(c.Chat().Username))
+		} else {
+			response = lang.RegDuplicate
+		}
 	}
 
 	_, err := bot.Send(m.Chat, response, telebot.NoPreview)

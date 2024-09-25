@@ -1,6 +1,10 @@
 package bot
 
-import "gorm.io/gorm"
+import (
+	"strings"
+
+	"gorm.io/gorm"
+)
 
 // Struct representing Chat object
 type Chat struct {
@@ -11,6 +15,9 @@ type Chat struct {
 
 // Creates new Chat object
 func newChat(ns string, ownerId int64) *Chat {
+	ns = strings.ToLower(ns)
+	ns = strings.ReplaceAll(ns, " ", "")
+
 	c := &Chat{
 		Namespace: ns,
 		OwnerID:   ownerId,

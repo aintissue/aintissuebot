@@ -41,5 +41,10 @@ func textCommand(c telebot.Context) error {
 		msgs[mn.ID] = m.Sender.ID
 	}
 
+	u.MsgCount++
+	if err := db.Save(u).Error; err != nil {
+		loge(err)
+	}
+
 	return nil
 }

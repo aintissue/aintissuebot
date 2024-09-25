@@ -11,3 +11,6 @@ registerError: "You either have to define your project name with <code>/register
 
 # Link command message
 linkMsg: "<b><u>Your Customer Support Link</u></b>\n\nUse the link bellow as contact point for your users.\n\n<code>%s</code>"
+
+# Register command duplicate response
+regDuplicate: "This namespace (username) had already been used, please choose another one."

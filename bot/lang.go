@@ -12,6 +12,7 @@ type Language struct {
 	RegisterDone  string `yaml:"registerDone"`
 	RegisterError string `yaml:"registerError"`
 	LinkMsg       string `yaml:"linkMsg"`
+	RegDuplicate  string `yaml:"regDuplicate"`
 }
 
 // Load method loads configuration file to Language struct
