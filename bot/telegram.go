@@ -22,7 +22,8 @@ func initTelegramBot() *telebot.Bot {
 
 	initTelegramCommands(b)
 
-	// cmd := telebot.Command{Text: "help", Description: "Some help command"}
+	// cmd := telebot.Command{Text: "register", Description: "Register your account or group"}
+	// cmd1 := telebot.Command{Text: "link", Description: "Show you customer support link"}
 
 	// cmds, err := b.Commands()
 	// if err != nil {
@@ -35,7 +36,7 @@ func initTelegramBot() *telebot.Bot {
 		Type: telebot.CommandScopeAllPrivateChats,
 	}
 
-	// err = b.SetCommands([]telebot.Command{cmd}, sc)
+	// err = b.SetCommands([]telebot.Command{cmd, cmd1}, sc)
 	err = b.SetCommands([]telebot.Command{}, sc)
 	if err != nil {
 		log.Println(err)
@@ -48,5 +49,6 @@ func initTelegramBot() *telebot.Bot {
 func initTelegramCommands(b *telebot.Bot) {
 	b.Handle("/start", startCommand)
 	b.Handle("/register", registerCommand)
+	b.Handle("/link", linkCommand)
 	b.Handle(telebot.OnText, textCommand)
 }

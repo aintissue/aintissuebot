@@ -7,3 +7,4 @@ ban - *Staff* Ban a user from the chat
 unban - *Staff* Unban a user"
 
 register - Register your account or group
+link - Show you customer support link

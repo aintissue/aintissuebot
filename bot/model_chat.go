@@ -44,3 +44,14 @@ func getChatId(id uint) *Chat {
 
 	return c
 }
+
+// Fetches Chat object by Telegram ID
+func getChatByTgId(id int64) *Chat {
+	c := &Chat{}
+
+	if err := db.First(c, &Chat{OwnerID: id}).Error; err != nil {
+		loge(err)
+	}
+
+	return c
+}

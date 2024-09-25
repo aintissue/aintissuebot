@@ -8,3 +8,6 @@ registerDone: "<b><u>You have successfully registered your group or account with
 
 # Register command error message
 registerError: "You either have to define your project name with <code>/register ProjectName</code> or you have to have public username / link on your Telegram account or group."
+
+# Link command message
+linkMsg: "<b><u>Your Customer Support Link</u></b>\n\nUse the link bellow as contact point for your users.\n\n<code>%s</code>"
