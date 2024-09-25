@@ -15,8 +15,7 @@ type Chat struct {
 
 // Creates new Chat object
 func newChat(ns string, ownerId int64) *Chat {
-	ns = strings.ToLower(ns)
-	ns = strings.ReplaceAll(ns, " ", "")
+	ns = normalizeNs(ns)
 
 	c := &Chat{
 		Namespace: ns,
@@ -33,6 +32,7 @@ func newChat(ns string, ownerId int64) *Chat {
 // Fetches Chat object by namespace
 func getChat(ns string) *Chat {
 	c := &Chat{}
+	ns = normalizeNs(ns)
 
 	if err := db.First(c, &Chat{Namespace: ns}).Error; err != nil {
 		loge(err)
@@ -61,4 +61,11 @@ func getChatByTgId(id int64) *Chat {
 	}
 
 	return c
+}
+
+func normalizeNs(ns string) string {
+	ns = strings.ToLower(ns)
+	ns = strings.ReplaceAll(ns, " ", "")
+
+	return ns
 }
