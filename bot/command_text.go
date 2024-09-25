@@ -1,8 +1,6 @@
 package bot
 
 import (
-	"fmt"
-
 	"gopkg.in/telebot.v3"
 )
 
@@ -26,11 +24,16 @@ func textCommand(c telebot.Context) error {
 		u := getUserOrCreate(m)
 		c := getChatById(u.DefaultChatID)
 		rec = &telebot.User{ID: c.OwnerID}
-		msg = fmt.Sprintf("<b><u>%s:</u></b>\n%s",
-			m.Sender.FirstName,
-			m.Text)
+		// msg = fmt.Sprintf("<b><u>%s:</u></b>\n%s",
+		// 	m.Sender.FirstName,
+		// 	m.Text)
 
-		mn, err := bot.Send(rec, msg, telebot.NoPreview)
+		// mn, err := bot.Send(rec, msg, telebot.NoPreview)
+		// if err != nil {
+		// 	loge(err)
+		// }
+
+		mn, err := bot.Forward(rec, m, telebot.NoPreview)
 		if err != nil {
 			loge(err)
 		}

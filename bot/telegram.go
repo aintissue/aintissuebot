@@ -23,7 +23,7 @@ func initTelegramBot() *telebot.Bot {
 	initTelegramCommands(b)
 
 	// cmd := telebot.Command{Text: "register", Description: "Register your account or group"}
-	// cmd1 := telebot.Command{Text: "link", Description: "Show you customer support link"}
+	// cmd1 := telebot.Command{Text: "link", Description: "Show your customer support link"}
 
 	// cmds, err := b.Commands()
 	// if err != nil {
@@ -51,4 +51,6 @@ func initTelegramCommands(b *telebot.Bot) {
 	b.Handle("/register", registerCommand)
 	b.Handle("/link", linkCommand)
 	b.Handle(telebot.OnText, textCommand)
+	b.Handle(telebot.OnPhoto, textCommand)
+	b.Handle(telebot.OnMedia, textCommand)
 }
