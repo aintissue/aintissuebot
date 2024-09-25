@@ -35,7 +35,7 @@ func getChat(ns string) *Chat {
 }
 
 // Fetches Chat object by ID
-func getChatId(id uint) *Chat {
+func getChatById(id uint) *Chat {
 	c := &Chat{}
 
 	if err := db.First(c, id).Error; err != nil {
