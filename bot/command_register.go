@@ -10,6 +10,7 @@ import (
 func registerCommand(c telebot.Context) error {
 	m := c.Message()
 	response := lang.RegisterError
+	getUserOrCreate(m)
 
 	if len(m.Payload) > 0 {
 		newChat(m.Payload, c.Chat().ID)

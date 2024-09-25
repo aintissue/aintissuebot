@@ -9,6 +9,7 @@ import (
 // Handler for link bot command
 func linkCommand(c telebot.Context) error {
 	m := c.Message()
+	getUserOrCreate(m)
 
 	chat := getChatByTgId(m.Chat.ID)
 	lnk := generateLink(chat.Namespace)
