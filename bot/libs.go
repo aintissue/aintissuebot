@@ -4,6 +4,8 @@ import "encoding/json"
 
 // Generates link for a project
 func generateLink(projectName string) string {
+	projectName = normalizeNs(projectName)
+
 	link := "https://t.me/"
 
 	if conf.Dev {

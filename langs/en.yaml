@@ -14,3 +14,6 @@ linkMsg: "<b><u>Your Customer Support Link</u></b>\n\nUse the link bellow as con
 
 # Register command duplicate response
 regDuplicate: "This namespace (username) had already been used, please choose another one."
+
+# Register update message
+regUpdateDone: "<b><u>You have successfully updated your group or account on AintIssueBot.</u></b> 🚀\n\nUse the link bellow as contact point for your users.\n\n<code>%s</code>"
