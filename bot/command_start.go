@@ -10,21 +10,25 @@ func startCommand(c telebot.Context) error {
 
 	response := lang.StartMsg
 
-	_, err := bot.Send(m.Chat, response, telebot.NoPreview)
-	if err != nil {
-		loge(err)
-	}
-
 	u := getUserOrCreate(m)
 
 	if len(m.Payload) > 0 {
-		c := getChat(m.Payload)
-		u.DefaultChatID = c.ID
+		if m.Payload == "login" {
+			response = getLoginLink(u)
+		} else {
+			c := getChat(m.Payload)
+			u.DefaultChatID = c.ID
+		}
 	} else {
 		u.DefaultChatID = 1
 	}
 
 	if err := db.Save(u).Error; err != nil {
+		loge(err)
+	}
+
+	_, err := bot.Send(m.Chat, response, telebot.NoPreview)
+	if err != nil {
 		loge(err)
 	}
 
