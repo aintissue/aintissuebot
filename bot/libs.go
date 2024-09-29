@@ -37,13 +37,13 @@ func getLoginLink(user *User) string {
 	}
 	defer resp.Body.Close()
 
-	var lar *LoginApiResponse
+	var lar LoginApiResponse
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		loge(err)
 	}
 
-	if err := json.Unmarshal(body, lar); err != nil {
+	if err := json.Unmarshal(body, &lar); err != nil {
 		loge(err)
 	}
 
