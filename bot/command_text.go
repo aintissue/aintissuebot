@@ -24,7 +24,7 @@ func textCommand(c telebot.Context) error {
 		}
 	}
 
-	if m.IsReply() {
+	if m.IsReply() && msgExists {
 		msg = m.Text
 		rec = &telebot.User{ID: msgs[m.ReplyTo.ID]}
 
