@@ -10,6 +10,7 @@ func textCommand(c telebot.Context) error {
 	var rec *telebot.User
 	var msg string
 	var chat *Chat
+	msgExists := false
 	u := getUserOrCreate(m)
 
 	if m.IsReply() {
@@ -42,7 +43,9 @@ func textCommand(c telebot.Context) error {
 		msgs[mn.ID] = m.Sender.ID
 	}
 
-	_, msgExists := msgs[m.ReplyTo.ID]
+	if m.IsReply() {
+		_, msgExists = msgs[m.ReplyTo.ID]
+	}
 
 	if (m.IsReply() && msgExists) || m.Private() {
 		u.MsgCount++
