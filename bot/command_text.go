@@ -42,7 +42,7 @@ func textCommand(c telebot.Context) error {
 		msgs[mn.ID] = m.Sender.ID
 	}
 
-	if (m.IsReply() && chat.ID != 0) || m.Private() {
+	if (m.IsReply() && chat != nil && chat.ID != 0) || m.Private() {
 		u.MsgCount++
 		if err := db.Save(u).Error; err != nil {
 			loge(err)
