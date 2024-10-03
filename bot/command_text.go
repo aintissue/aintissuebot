@@ -9,6 +9,7 @@ func textCommand(c telebot.Context) error {
 	m := c.Message()
 	var rec *telebot.User
 	var msg string
+	var chat *Chat
 	u := getUserOrCreate(m)
 
 	if m.IsReply() {
@@ -22,8 +23,8 @@ func textCommand(c telebot.Context) error {
 
 		delete(msgs, m.ReplyTo.ID)
 	} else if m.Private() {
-		c := getChatById(u.DefaultChatID)
-		rec = &telebot.User{ID: c.OwnerID}
+		chat = getChatById(u.DefaultChatID)
+		rec = &telebot.User{ID: chat.OwnerID}
 		// msg = fmt.Sprintf("<b><u>%s:</u></b>\n%s",
 		// 	m.Sender.FirstName,
 		// 	m.Text)
@@ -41,7 +42,7 @@ func textCommand(c telebot.Context) error {
 		msgs[mn.ID] = m.Sender.ID
 	}
 
-	if m.IsReply() || m.Private() {
+	if (m.IsReply() && chat.ID != 0) || m.Private() {
 		u.MsgCount++
 		if err := db.Save(u).Error; err != nil {
 			loge(err)
