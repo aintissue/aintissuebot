@@ -14,6 +14,17 @@ func textCommand(c telebot.Context) error {
 	u := getUserOrCreate(m)
 
 	if m.IsReply() {
+		_, msgExists = msgs[m.ReplyTo.ID]
+	}
+
+	if (m.IsReply() && msgExists) || m.Private() {
+		u.MsgCount++
+		if err := db.Save(u).Error; err != nil {
+			loge(err)
+		}
+	}
+
+	if m.IsReply() {
 		msg = m.Text
 		rec = &telebot.User{ID: msgs[m.ReplyTo.ID]}
 
@@ -22,7 +33,7 @@ func textCommand(c telebot.Context) error {
 			loge(err)
 		}
 
-		// delete(msgs, m.ReplyTo.ID)
+		delete(msgs, m.ReplyTo.ID)
 	} else if m.Private() {
 		chat = getChatById(u.DefaultChatID)
 		rec = &telebot.User{ID: chat.OwnerID}
@@ -41,20 +52,6 @@ func textCommand(c telebot.Context) error {
 		}
 
 		msgs[mn.ID] = m.Sender.ID
-	}
-
-	if m.IsReply() {
-		_, msgExists = msgs[m.ReplyTo.ID]
-	}
-
-	if (m.IsReply() && msgExists) || m.Private() {
-		u.MsgCount++
-		if err := db.Save(u).Error; err != nil {
-			loge(err)
-		}
-		if m.IsReply() {
-			delete(msgs, m.ReplyTo.ID)
-		}
 	}
 
 	return nil
