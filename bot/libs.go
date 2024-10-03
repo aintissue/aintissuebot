@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math/rand"
 	"net/http"
+	"time"
 )
 
 // Generates link for a project
@@ -53,4 +55,17 @@ func getLoginLink(user *User) string {
 type LoginApiResponse struct {
 	TelegramId int64  `json:"telegram_id"`
 	SessionId  string `json:"session_id"`
+}
+
+func randomString(length int) string {
+	rand.Seed(time.Now().UnixNano())
+
+	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	result := make([]byte, length)
+
+	for i := range result {
+		result[i] = charset[rand.Intn(len(charset))]
+	}
+
+	return string(result)
 }

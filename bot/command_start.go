@@ -12,6 +12,12 @@ func startCommand(c telebot.Context) error {
 
 	u := getUserOrCreate(m)
 
+	if len(u.RefCode) == 0 && len(u.TelUsername) > 0 {
+		u.RefCode = u.TelUsername
+	} else if len(u.RefCode) == 0 {
+		u.RefCode = randomString(10)
+	}
+
 	if len(m.Payload) > 0 {
 		if m.Payload == "login" {
 			response = getLoginLink(u)
