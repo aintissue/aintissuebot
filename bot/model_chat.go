@@ -10,12 +10,12 @@ import (
 type Chat struct {
 	gorm.Model
 	Namespace string `gorm:"size:255;uniqueIndex"`
-	OwnerID   int64
+	OwnerID   uint
 	ChatID    int64
 }
 
 // Creates new Chat object
-func newChat(ns string, ownerId int64, chatId int64) *Chat {
+func newChat(ns string, ownerId uint, chatId int64) *Chat {
 	ns = normalizeNs(ns)
 
 	c := &Chat{
