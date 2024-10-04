@@ -19,6 +19,12 @@ type User struct {
 	Plan          int    `gorm:"default:0"`
 }
 
+func (u *User) getChats() []*Chat {
+	var chats []*Chat
+	db.Find(&chats, &Chat{OwnerID: u.ID})
+	return chats
+}
+
 // Fetches User object by Telegram ID
 func getUser(tid int64) *User {
 	u := &User{}

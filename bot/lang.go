@@ -14,6 +14,7 @@ type Language struct {
 	LinkMsg       string `yaml:"linkMsg"`
 	RegDuplicate  string `yaml:"regDuplicate"`
 	RegUpdateDone string `yaml:"regUpdateDone"`
+	MustUpgrade   string `yaml:"mustUpgrade"`
 }
 
 // Load method loads configuration file to Language struct

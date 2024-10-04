@@ -15,11 +15,11 @@ func registerCommand(c telebot.Context) error {
 
 	if len(m.Payload) > 0 {
 		if chat.ID == 0 {
-			chat := newChat(m.Payload, u.ID, c.Chat().ID)
+			chat, errResp := newChat(m.Payload, u, c.Chat().ID)
 			if chat.ID != 0 {
 				response = fmt.Sprintf(lang.RegisterDone, generateLink(m.Payload))
 			} else {
-				response = lang.RegDuplicate
+				response = errResp
 			}
 		} else {
 			chat.Namespace = normalizeNs(m.Payload)
@@ -31,11 +31,11 @@ func registerCommand(c telebot.Context) error {
 		}
 	} else if len(c.Chat().Username) > 0 {
 		if chat.ID == 0 {
-			chat := newChat(c.Chat().Username, u.ID, c.Chat().ID)
+			chat, errResp := newChat(c.Chat().Username, u, c.Chat().ID)
 			if chat.ID != 0 {
 				response = fmt.Sprintf(lang.RegisterDone, generateLink(c.Chat().Username))
 			} else {
-				response = lang.RegDuplicate
+				response = errResp
 			}
 		} else {
 			chat.Namespace = normalizeNs(c.Chat().Username)
