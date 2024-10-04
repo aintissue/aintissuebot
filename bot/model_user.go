@@ -16,6 +16,7 @@ type User struct {
 	DefaultChat   *Chat `gorm:"default:1"`
 	MsgCount      uint64
 	RefCode       string `gorm:"size:255 uniqueIndex"`
+	Plan          int    `gorm:"default:0"`
 }
 
 // Fetches User object by Telegram ID

@@ -11,15 +11,17 @@ type Chat struct {
 	gorm.Model
 	Namespace string `gorm:"size:255;uniqueIndex"`
 	OwnerID   int64
+	ChatID    int64
 }
 
 // Creates new Chat object
-func newChat(ns string, ownerId int64) *Chat {
+func newChat(ns string, ownerId int64, chatId int64) *Chat {
 	ns = normalizeNs(ns)
 
 	c := &Chat{
 		Namespace: ns,
 		OwnerID:   ownerId,
+		ChatID:    chatId,
 	}
 
 	if err := db.Save(c).Error; err != nil {
@@ -56,7 +58,7 @@ func getChatById(id uint) *Chat {
 func getChatByTgId(id int64) *Chat {
 	c := &Chat{}
 
-	if err := db.First(c, &Chat{OwnerID: id}).Error; err != nil {
+	if err := db.First(c, &Chat{ChatID: id}).Error; err != nil {
 		loge(err)
 	}
 
