@@ -10,12 +10,12 @@ import (
 func registerCommand(c telebot.Context) error {
 	m := c.Message()
 	response := lang.RegisterError
-	getUserOrCreate(m)
+	u := getUserOrCreate(m)
 	chat := getChatByTgId(m.Chat.ID)
 
 	if len(m.Payload) > 0 {
 		if chat.ID == 0 {
-			chat := newChat(m.Payload, c.Chat().ID)
+			chat := newChat(m.Payload, int64(u.ID), c.Chat().ID)
 			if chat.ID != 0 {
 				response = fmt.Sprintf(lang.RegisterDone, generateLink(m.Payload))
 			} else {
@@ -31,7 +31,7 @@ func registerCommand(c telebot.Context) error {
 		}
 	} else if len(c.Chat().Username) > 0 {
 		if chat.ID == 0 {
-			chat := newChat(c.Chat().Username, c.Chat().ID)
+			chat := newChat(c.Chat().Username, int64(u.ID), c.Chat().ID)
 			if chat.ID != 0 {
 				response = fmt.Sprintf(lang.RegisterDone, generateLink(c.Chat().Username))
 			} else {
