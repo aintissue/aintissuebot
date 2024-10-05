@@ -1,6 +1,9 @@
 package bot
 
 import (
+	"log"
+	"os"
+
 	"gopkg.in/telebot.v3"
 	"gorm.io/gorm"
 )
@@ -17,6 +20,8 @@ var db *gorm.DB
 
 // Package init function
 func init() {
+	log.Println(os.Getenv("TEST"))
+
 	conf = initConfig()
 
 	lang = initLang()
@@ -30,6 +35,8 @@ func init() {
 
 // Prepares the environment and runs the bot
 func Run() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
 	logs("Bot started successfully. 🚀")
 
 	bot.Start()

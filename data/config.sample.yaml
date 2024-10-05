@@ -4,8 +4,5 @@ dev: true
 # Telegram API Key
 telegram_key: TELEGRAM_BOT_API_KEY
 
-# Telegram Owner ID
-owner_id: YOUR_TELEGRAM_ID
-
 # Database URI (path for SQLite or set of data for Postgres)
 db_uri: data/bot.db
