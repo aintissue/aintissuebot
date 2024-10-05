@@ -2,7 +2,6 @@ package bot
 
 import (
 	"log"
-	"os"
 
 	"gopkg.in/telebot.v3"
 	"gorm.io/gorm"
@@ -20,8 +19,6 @@ var db *gorm.DB
 
 // Package init function
 func init() {
-	log.Println(os.Getenv("TEST"))
-
 	conf = initConfig()
 
 	lang = initLang()
