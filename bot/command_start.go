@@ -1,6 +1,8 @@
 package bot
 
 import (
+	"strings"
+
 	"gopkg.in/telebot.v3"
 )
 
@@ -19,7 +21,7 @@ func startCommand(c telebot.Context) error {
 	}
 
 	if len(m.Payload) > 0 {
-		if m.Payload == "login" {
+		if strings.HasPrefix(m.Payload, "login") {
 			response = getLoginLink(u)
 		} else {
 			c := getChat(m.Payload)

@@ -1,6 +1,8 @@
 package bot
 
 import (
+	"strings"
+
 	"gopkg.in/telebot.v3"
 	"gorm.io/gorm"
 )
@@ -17,6 +19,8 @@ type User struct {
 	MsgCount      uint64
 	RefCode       string `gorm:"size:255 uniqueIndex"`
 	Plan          int    `gorm:"default:0"`
+	ReferralID    uint
+	Referral      *User
 }
 
 func (u *User) getChats() []*Chat {
@@ -30,6 +34,16 @@ func getUser(tid int64) *User {
 	u := &User{}
 	// log.Println(prettyPrint(u))
 	if err := db.First(u, &User{TelegramId: tid}).Error; err != nil {
+		loge(err)
+	}
+
+	return u
+}
+
+func getUserByCode(code string) *User {
+	u := &User{}
+
+	if err := db.First(u, &User{RefCode: code}).Error; err != nil {
 		loge(err)
 	}
 
@@ -64,6 +78,18 @@ func getUserOrCreate(m *telebot.Message) *User {
 
 	if u.ID == 0 {
 		u = newUser(m)
+	}
+
+	if u.ReferralID == 0 && strings.HasPrefix(m.Payload, "login-") {
+		code := strings.Split(m.Payload, "-")[1]
+		r := getUserByCode(code)
+		if r.ID != 0 {
+			u.ReferralID = r.ID
+			err := db.Save(u).Error
+			if err != nil {
+				loge(err)
+			}
+		}
 	}
 
 	return u
