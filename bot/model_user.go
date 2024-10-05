@@ -83,7 +83,7 @@ func getUserOrCreate(m *telebot.Message) *User {
 	if u.ReferralID == 0 && strings.HasPrefix(m.Payload, "login-") {
 		code := strings.Split(m.Payload, "-")[1]
 		r := getUserByCode(code)
-		if r.ID != 0 {
+		if r.ID != 0 && u.ID != r.ID {
 			u.ReferralID = r.ID
 			err := db.Save(u).Error
 			if err != nil {
